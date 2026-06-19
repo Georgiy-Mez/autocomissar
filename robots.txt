@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /send-request/
+Disallow: /*?*
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /send-request/
+Disallow: /*?*
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /send-request/
+
+Host: komissar125.ru
+Sitemap: https://komissar125.ru/sitemap.xml
