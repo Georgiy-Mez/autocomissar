@@ -151,6 +151,10 @@ section { padding: 72px 0; }
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .review-card { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; }
 .review-stars { color: #f59e0b; font-size: 1.2rem; letter-spacing: 2px; }
+.review-stars .star { color: #d1d5db; }
+.review-stars .star.on { color: #f59e0b; }
+.reviews-aggregate { color: var(--gray); font-size: 0.95rem; margin-top: 8px; }
+.reviews-aggregate strong { color: #f59e0b; font-size: 1.1rem; }
 .review-card p { color: var(--text-light); font-size: 0.9rem; font-style: italic; flex: 1; }
 .review-author { font-size: 0.85rem; }
 .review-author strong { color: var(--dark); }
@@ -434,3 +438,16 @@ a.contact-value:hover { color: var(--red); }
   .hmm-btn { width: 34px; height: 34px; }
   .hmm-btn svg { width: 17px; height: 17px; }
 }
+
+/* ===== Reviews section ===== */
+.reviews-section { padding: 64px 0; background: var(--bg-alt, #f6f8fb); }
+.reviews-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+.reviews-head h2 { margin: 0; }
+.reviews-rating { display: flex; align-items: center; gap: 8px; font-size: 0.98rem; }
+.reviews-rating .reviews-stars { color: #f5a623; letter-spacing: 2px; font-size: 1.1rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+.review-card { background: #fff; border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius-lg, 14px); padding: 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 12px; }
+.review-stars { color: #f5a623; letter-spacing: 2px; font-size: 1.05rem; }
+.review-text { margin: 0; line-height: 1.6; color: #333; }
+.review-author { font-weight: 600; color: var(--dark, #1a1a2e); font-size: 0.92rem; }
+@media (max-width: 560px) { .reviews-section { padding: 44px 0; } .reviews-grid { grid-template-columns: 1fr; } }
