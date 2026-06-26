@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (data.message) lines.push('Сообщение: ' + data.message);
     lines.push('Согласие на рекламную рассылку: ' + (data.marketing ? 'да' : 'нет'));
     var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+    if (window.ymGoal) { window.ymGoal('lead_form'); }
     window.open(url, '_blank');
     if (typeof onSuccess === 'function') onSuccess();
   }
@@ -171,14 +172,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // ---- ЯНДЕКС.МЕТРИКА (грузится только после согласия на cookie) ----
+  // ВАЖНО: впишите номер своего счётчика вместо 00000000
+  var METRIKA_ID = 00000000;
+  var metrikaLoaded = false;
+  function loadMetrika() {
+    if (metrikaLoaded || !METRIKA_ID || METRIKA_ID === 0) return;
+    metrikaLoaded = true;
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < e.scripts.length; j++) { if (e.scripts[j].src === r) { return; } }
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(METRIKA_ID, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+  }
+  // цель: вызывается из submitRequest и обработчиков кликов
+  window.ymGoal = function (name) {
+    if (window.ym && METRIKA_ID && METRIKA_ID !== 0) { ym(METRIKA_ID, 'reachGoal', name); }
+  };
+
   // ---- COOKIE BANNER (152-ФЗ) ----
   var cookieBanner = document.getElementById('cookie-banner');
   var cookieAccept = document.getElementById('cookie-accept');
   var cookieDecline = document.getElementById('cookie-decline');
   if (cookieBanner && cookieAccept) {
+    var hasConsent = document.cookie.split('; ').some(function (c) { return c.indexOf('cookie_consent=1') === 0; });
     try {
       if (!document.cookie.split('; ').some(function (c) { return c.indexOf('cookie_consent=') === 0; })) {
         setTimeout(function () { cookieBanner.classList.add('show'); }, 700);
+      } else if (hasConsent) {
+        loadMetrika(); // согласие уже дано ранее — грузим Метрику
       }
     } catch (e) { cookieBanner.classList.add('show'); }
     function setConsent(val) {
@@ -186,10 +211,22 @@ document.addEventListener('DOMContentLoaded', function () {
       d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
       document.cookie = 'cookie_consent=' + val + '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
       cookieBanner.classList.remove('show');
+      if (val === '1') { loadMetrika(); }
     }
     cookieAccept.addEventListener('click', function () { setConsent('1'); });
     if (cookieDecline) cookieDecline.addEventListener('click', function () { setConsent('0'); });
   }
+
+  // ---- ЦЕЛИ: клики по телефону и мессенджерам ----
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) { window.ymGoal('phone_click'); }
+    else if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp') !== -1) { window.ymGoal('whatsapp_click'); }
+    else if (href.indexOf('t.me') !== -1) { window.ymGoal('telegram_click'); }
+  });
+
 
   // ---- STICKY HEADER SHADOW ----
   var header = document.getElementById('site-header');
