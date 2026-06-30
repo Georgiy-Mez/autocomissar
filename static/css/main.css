@@ -73,6 +73,7 @@ ul, ol { padding-left: 1.25rem; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
 .logo-text { display: flex; flex-direction: column; }
 .logo-name { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--dark); line-height: 1.2; }
+.logo-name-mobile { display: none; }
 .logo-region { font-size: 0.7rem; color: var(--gray); letter-spacing: 0.5px; }
 .main-nav { flex: 1; }
 .main-nav ul { display: flex; align-items: center; gap: 4px; list-style: none; padding: 0; }
@@ -326,11 +327,12 @@ a.contact-value:hover { color: var(--red); }
   .logo { gap: 8px; min-width: 0; flex: 1 1 auto; overflow: hidden; }
   .logo-icon img { width: 32px !important; height: 32px !important; }
   .logo-text { min-width: 0; overflow: hidden; }
-  .logo-name { font-size: 0.78rem; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .logo-region { display: none; }
+  .logo-name { display: none; }
+  .logo-name-mobile { display: block; font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; line-height: 1.15; color: var(--dark); white-space: nowrap; }
+  .logo-region { display: block; font-size: 0.65rem; color: var(--gray); letter-spacing: 0.3px; }
   .header-mobile-msgs { flex-shrink: 0; gap: 5px; margin-left: 0; }
-  .hmm-btn { width: 34px; height: 34px; }
-  .hmm-btn svg { width: 17px; height: 17px; }
+  .hmm-btn { width: 32px; height: 32px; }
+  .hmm-btn svg { width: 16px; height: 16px; }
   .burger { flex-shrink: 0; }
   .main-nav { display: none; position: fixed; inset: 0; top: 70px; background: var(--white); padding: 20px; z-index: 999; overflow-y: auto; }
   .main-nav.open { display: block; }
@@ -365,11 +367,15 @@ a.contact-value:hover { color: var(--red); }
   .hero-actions { flex-direction: column; }
   .cities-grid { grid-template-columns: 1fr 1fr; }
   .about-numbers { grid-template-columns: 1fr 1fr; }
-  .logo-name { font-size: 0.7rem; }
+  .logo-name-mobile { font-size: 0.88rem; }
   .logo-icon img { width: 28px !important; height: 28px !important; }
   .hmm-btn { width: 30px; height: 30px; }
   .hmm-btn svg { width: 15px; height: 15px; }
   .header-main-inner { gap: 6px; }
+}
+@media (max-width: 400px) {
+  .header-mobile-msgs .hmm-btn--max { display: none; }
+  .logo-name-mobile { font-size: 0.82rem; }
 }
 
 /* ========== ЮРИДИЧЕСКИЕ СТРАНИЦЫ ========== */
@@ -435,8 +441,8 @@ a.contact-value:hover { color: var(--red); }
   .header-mobile-msgs { display: inline-flex; }
 }
 @media (max-width: 380px) {
-  .hmm-btn { width: 34px; height: 34px; }
-  .hmm-btn svg { width: 17px; height: 17px; }
+  .hmm-btn { width: 30px; height: 30px; }
+  .hmm-btn svg { width: 15px; height: 15px; }
 }
 
 /* ===== Reviews section ===== */
