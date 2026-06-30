@@ -369,13 +369,15 @@ a.contact-value:hover { color: var(--red); }
   .about-numbers { grid-template-columns: 1fr 1fr; }
   .logo-name-mobile { font-size: 0.8rem; }
   .logo-icon img { width: 28px !important; height: 28px !important; }
-  .hmm-btn { width: 30px; height: 30px; }
+  .hmm-btn { width: 29px; height: 29px; }
   .hmm-btn svg { width: 15px; height: 15px; }
+  .header-mobile-msgs { gap: 4px; }
   .header-main-inner { gap: 6px; }
 }
 @media (max-width: 400px) {
-  .header-mobile-msgs .hmm-btn--max { display: none; }
   .logo-name-mobile { font-size: 0.76rem; }
+  .hmm-btn { width: 27px; height: 27px; }
+  .hmm-btn svg { width: 14px; height: 14px; }
 }
 
 /* ========== ЮРИДИЧЕСКИЕ СТРАНИЦЫ ========== */
