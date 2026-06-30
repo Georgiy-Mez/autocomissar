@@ -328,8 +328,8 @@ a.contact-value:hover { color: var(--red); }
   .logo-icon img { width: 32px !important; height: 32px !important; }
   .logo-text { min-width: 0; overflow: hidden; }
   .logo-name { display: none; }
-  .logo-name-mobile { display: block; font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; line-height: 1.15; color: var(--dark); white-space: nowrap; }
-  .logo-region { display: block; font-size: 0.65rem; color: var(--gray); letter-spacing: 0.3px; }
+  .logo-name-mobile { display: block; font-family: var(--font-head); font-weight: 700; font-size: 0.86rem; line-height: 1.12; color: var(--dark); white-space: normal; }
+  .logo-region { display: none; }
   .header-mobile-msgs { flex-shrink: 0; gap: 5px; margin-left: 0; }
   .hmm-btn { width: 32px; height: 32px; }
   .hmm-btn svg { width: 16px; height: 16px; }
@@ -367,7 +367,7 @@ a.contact-value:hover { color: var(--red); }
   .hero-actions { flex-direction: column; }
   .cities-grid { grid-template-columns: 1fr 1fr; }
   .about-numbers { grid-template-columns: 1fr 1fr; }
-  .logo-name-mobile { font-size: 0.88rem; }
+  .logo-name-mobile { font-size: 0.8rem; }
   .logo-icon img { width: 28px !important; height: 28px !important; }
   .hmm-btn { width: 30px; height: 30px; }
   .hmm-btn svg { width: 15px; height: 15px; }
@@ -375,7 +375,7 @@ a.contact-value:hover { color: var(--red); }
 }
 @media (max-width: 400px) {
   .header-mobile-msgs .hmm-btn--max { display: none; }
-  .logo-name-mobile { font-size: 0.82rem; }
+  .logo-name-mobile { font-size: 0.76rem; }
 }
 
 /* ========== ЮРИДИЧЕСКИЕ СТРАНИЦЫ ========== */
