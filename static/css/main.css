@@ -628,3 +628,18 @@ a.contact-value:hover { color: var(--red); }
   .header-call { padding: 6px 9px; }
   .header-call .hc-num { font-size: 12px; }
 }
+
+
+/* === Моб. шапка v2: короткое имя, крупная иконка, тревожная кнопка === */
+@media (max-width: 768px) {
+  .logo-name-mobile { font-size: 0.92rem !important; font-weight: 800 !important; line-height: 1.1 !important; }
+  .logo-icon img { width: 58px !important; height: 58px !important; }
+  .header-call { background: #e11d2a !important; box-shadow: 0 6px 18px rgba(225,29,42,.45); animation: hc-alarm 1.3s infinite; }
+  .header-call:hover, .header-call:active { background: #c2161f !important; }
+  .header-call .hc-num { font-size: 13.5px; }
+}
+@keyframes hc-alarm {
+  0%   { transform: scale(1);    box-shadow: 0 6px 18px rgba(225,29,42,.45), 0 0 0 0 rgba(225,29,42,.55); }
+  60%  { transform: scale(1.045);box-shadow: 0 6px 18px rgba(225,29,42,.45), 0 0 0 13px rgba(225,29,42,0); }
+  100% { transform: scale(1);    box-shadow: 0 6px 18px rgba(225,29,42,.45), 0 0 0 0 rgba(225,29,42,0); }
+}
