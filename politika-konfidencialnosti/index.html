@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1014302180"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-1014302180');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0D6EFD">
@@ -532,5 +540,22 @@
 <script src="/static/js/main.js?v=4"></script>
 <!-- click.ru -->
 <script async src="https://af.click.ru/af.js?id=22051"></script>
+<!-- Конверсия Google Ads: клик на звонок (tel:) или отправка заявки -->
+<script>
+(function(){
+  function fireConv(){
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': 'AW-1014302180/1QvHCMTWoAMQ5IvU4wM', 'value': 1.0, 'currency': 'RUB' });
+    }
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target; if (t && t.nodeType === 3) { t = t.parentElement; }
+    var a = (t && t.closest) ? t.closest('a[href^="tel:"]') : null;
+    if (a) { fireConv(); }
+  }, true);
+  var form = document.getElementById('request-form');
+  if (form) { form.addEventListener('submit', function(){ fireConv(); }, true); }
+})();
+</script>
 </body>
 </html>
